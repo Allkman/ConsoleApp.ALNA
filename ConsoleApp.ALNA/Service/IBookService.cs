@@ -9,7 +9,6 @@ namespace ConsoleApp.ALNA.Service
 {
     public interface IBookService
     {
-        Book ReturnBook(int selectedbook);
-        int SelectBook(int userInput);
+        Book SelectBook();
     }
 }

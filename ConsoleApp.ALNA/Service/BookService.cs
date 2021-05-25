@@ -7,26 +7,33 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.ALNA.Service
 {
-    class BookService
+    class BookService : IBookService
     {
-
-        List<Book> bookList = new List<Book>
+        readonly List<Book> bookList = new List<Book>
         {
-            new Book()  { BookId = 1, Name= "Laimes Paukstis" },
-            new Book()  { BookId = 2, Name= "Paukstis" },
-            new Book()  { BookId = 3, Name= "Kamuolys" }
+            new Book()  { BookId = 1, Name= "The Little Prince" },
+            new Book()  { BookId = 2, Name= "The Stand" },
+            new Book()  { BookId = 3, Name= "Life of Pi" }
         };
         public Book SelectBook()
         {
             int bookIdInput = 0;
             DisplayBooks();
+            Console.WriteLine();
+            Console.WriteLine("Input a number that corresponds to a book");
             while (bookIdInput > bookList.Count || bookIdInput == 0)
             {
-                var idInputChar = Console.ReadKey().KeyChar;
-                int.TryParse(Console.ReadLine(), out userInput)
-                Console.WriteLine("Incorrect book number, try again");
+                var idChar = Console.ReadKey().KeyChar;
+                int.TryParse(idChar.ToString(), out bookIdInput);
+                if (bookIdInput > bookList.Count || bookIdInput == 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"input of {idChar} is not correct. Please try again.");
+                }
             }
-            return userInput - 1;
+            Console.WriteLine();
+            Console.WriteLine($"You have selected: {bookList[bookIdInput-1].Name}");
+            return bookList[bookIdInput-1];
         }
         public void DisplayBooks()
         {

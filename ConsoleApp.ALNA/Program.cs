@@ -10,12 +10,13 @@ namespace ConsoleApp.ALNA
             Console.WriteLine("Hello World!");
             //Book library (3 books)
             //result return book
+            IBookService bookService = new BookService();
 
-            int userInput = 0;
-            var book1 = new BookService();
-            book1.SelectBook(userInput);
+
+
+            bookService.SelectBook();
             
-            Console.WriteLine($"Vartotojo pasirinkta knyga: {book1.ReturnBook(userInput)}");
+            
 
             Console.WriteLine("Press any key to close");
             Console.ReadKey();

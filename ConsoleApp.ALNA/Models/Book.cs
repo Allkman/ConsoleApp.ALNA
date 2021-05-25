@@ -10,15 +10,5 @@ namespace ConsoleApp.ALNA.Models
     {
         public int BookId { get; set; }
         public string Name { get; set; }
-        public Book(int id, string name)
-        {
-            BookId = id;
-            Name = name;
-        }
-        public Book()
-        {
-
-        }
-
     }
 }
